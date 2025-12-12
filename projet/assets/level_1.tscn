@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://boxfw016e1qcv"]
+[gd_scene load_steps=40 format=4 uid="uid://boxfw016e1qcv"]
 
 [ext_resource type="Texture2D" uid="uid://cr5fx6jgtsi8u" path="res://assets/images/Background.png" id="1_wahd1"]
 [ext_resource type="Texture2D" uid="uid://chk3lfvk1lk4p" path="res://assets/images/Terrain (16x16).png" id="2_4nrvh"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bo0cbayoi1ok5" path="res://assets/images/Fall (32x32).png" id="4_srb8c"]
 [ext_resource type="Texture2D" uid="uid://b6sbpeiwlcqmd" path="res://assets/images/Run (32x32).png" id="5_ng4jb"]
 [ext_resource type="Texture2D" uid="uid://ba4t3md07h7l3" path="res://assets/images/Jump (32x32).png" id="6_tqnsx"]
+[ext_resource type="PackedScene" uid="uid://bd2evuetg205a" path="res://assets/scenes/collectible.tscn" id="9_tqnsx"]
+[ext_resource type="Script" uid="uid://dtrkjqrbu4p8s" path="res://assets/game_manager.gd" id="10_wqq1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwr0x"]
 texture = ExtResource("2_4nrvh")
@@ -407,12 +409,14 @@ shape = SubResource("CapsuleShape2D_4nrvh")
 [node name="sfx_jump" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("4_pwr0x")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Collectible" parent="." instance=ExtResource("9_tqnsx")]
+position = Vector2(304, 256)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Collectible2" parent="." instance=ExtResource("9_tqnsx")]
+position = Vector2(993, 385)
 
-[node name="Area2D" type="Area2D" parent="Node2D"]
+[node name="Collectible3" parent="." instance=ExtResource("9_tqnsx")]
+position = Vector2(471, 99)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Area2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("10_wqq1k")

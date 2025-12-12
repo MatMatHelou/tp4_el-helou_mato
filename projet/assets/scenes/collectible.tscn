@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bd2evuetg205a"]
+
+[ext_resource type="Script" uid="uid://dhbcdiwt5gkdb" path="res://assets/scenes/collectible.gd" id="1_831cw"]
+[ext_resource type="Texture2D" uid="uid://dkyskcgtyhqfl" path="res://assets/images/coin.png" id="1_o5kkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av0uc"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(0, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hneua"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(84, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnvd6"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(168, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b0ry"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(252, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wd34"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(336, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dryx7"]
+atlas = ExtResource("1_o5kkh")
+region = Rect2(420, 0, 84, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frxd7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hneua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnvd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b0ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wd34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dryx7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8vdt"]
+radius = 16.0
+
+[node name="Collectible" type="Area2D"]
+script = ExtResource("1_831cw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.999998, -1)
+scale = Vector2(0.309524, 0.297619)
+sprite_frames = SubResource("SpriteFrames_frxd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_a8vdt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
