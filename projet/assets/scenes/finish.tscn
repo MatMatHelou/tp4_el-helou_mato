@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqetlflyhtk4l"]
+
+[ext_resource type="Texture2D" uid="uid://dr5visu0lmhib" path="res://assets/images/End (Pressed) (64x64).png" id="1_8e2gy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvrku"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grrmf"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iir6v"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fgfq"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c15h"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5wwr"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inwhb"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cow8h"]
+atlas = ExtResource("1_8e2gy")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mitay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvrku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grrmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iir6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fgfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c15h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5wwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inwhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cow8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdojk"]
+size = Vector2(48, 51)
+
+[node name="Finish" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(837, 513)
+sprite_frames = SubResource("SpriteFrames_mitay")
+frame = 5
+frame_progress = 0.847494
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(837, 519)
+shape = SubResource("RectangleShape2D_cdojk")
