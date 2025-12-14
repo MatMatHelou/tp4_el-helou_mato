@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://boxfw016e1qcv"]
+[gd_scene load_steps=44 format=4 uid="uid://boxfw016e1qcv"]
 
 [ext_resource type="Texture2D" uid="uid://cr5fx6jgtsi8u" path="res://assets/images/Background.png" id="1_ir25h"]
 [ext_resource type="Texture2D" uid="uid://chk3lfvk1lk4p" path="res://assets/images/Terrain (16x16).png" id="2_pcr03"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bd2evuetg205a" path="res://assets/scenes/collectible.tscn" id="9_8fgsj"]
 [ext_resource type="Script" uid="uid://dtrkjqrbu4p8s" path="res://assets/game_manager.gd" id="10_rdujy"]
 [ext_resource type="PackedScene" uid="uid://dqetlflyhtk4l" path="res://assets/scenes/finish.tscn" id="11_vqksq"]
+[ext_resource type="PackedScene" uid="uid://c1dxmqn8loey3" path="res://assets/scenes/enemy.tscn" id="12_pcr03"]
+[ext_resource type="Script" uid="uid://b73ehhouyj5dk" path="res://assets/scenes/fall_area.gd" id="13_ha1g7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwr0x"]
 texture = ExtResource("2_pcr03")
@@ -377,6 +379,8 @@ animations = [{
 radius = 11.0
 height = 32.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_02m7l"]
+
 [node name="level1" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -415,7 +419,7 @@ stream = ExtResource("8_dmkct")
 position = Vector2(296, 233)
 
 [node name="Collectible2" parent="." instance=ExtResource("9_8fgsj")]
-position = Vector2(993, 385)
+position = Vector2(981, 364)
 
 [node name="Collectible3" parent="." instance=ExtResource("9_8fgsj")]
 position = Vector2(435, 71)
@@ -446,3 +450,16 @@ theme_override_font_sizes/font_size = 16
 text = "Points : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Enemy" parent="." instance=ExtResource("12_pcr03")]
+position = Vector2(9, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(583, 657)
+script = ExtResource("13_ha1g7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 0)
+shape = SubResource("WorldBoundaryShape2D_02m7l")
+
+[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]

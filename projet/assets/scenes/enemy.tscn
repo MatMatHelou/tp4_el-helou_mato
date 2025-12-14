@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1dxmqn8loey3"]
+
+[ext_resource type="Texture2D" uid="uid://dlqgwppfllkhv" path="res://assets/images/Idle.png" id="1_kvq5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbpvo"]
+atlas = ExtResource("1_kvq5h")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55kjn"]
+atlas = ExtResource("1_kvq5h")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4rmu"]
+atlas = ExtResource("1_kvq5h")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovi8q"]
+atlas = ExtResource("1_kvq5h")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2q6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbpvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55kjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4rmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovi8q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3hxu"]
+size = Vector2(42, 46)
+
+[node name="Enemy" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(295, 80)
+scale = Vector2(1.47917, 1.35417)
+sprite_frames = SubResource("SpriteFrames_t2q6g")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(286, 91)
+shape = SubResource("RectangleShape2D_o3hxu")
