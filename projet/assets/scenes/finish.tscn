@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqetlflyhtk4l"]
+[gd_scene load_steps=14 format=3 uid="uid://dqetlflyhtk4l"]
 
 [ext_resource type="Texture2D" uid="uid://dr5visu0lmhib" path="res://assets/images/End (Pressed) (64x64).png" id="1_8e2gy"]
+[ext_resource type="Script" uid="uid://bgxhxlmdeb5qu" path="res://assets/scenes/finish.gd" id="1_bvrku"]
+[ext_resource type="PackedScene" uid="uid://daismntjq50jk" path="res://assets/scenes/level_2.tscn" id="2_grrmf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvrku"]
 atlas = ExtResource("1_8e2gy")
@@ -70,6 +72,8 @@ animations = [{
 size = Vector2(48, 51)
 
 [node name="Finish" type="Area2D"]
+script = ExtResource("1_bvrku")
+target_level = ExtResource("2_grrmf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(837, 513)
@@ -80,3 +84,5 @@ frame_progress = 0.847494
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(837, 519)
 shape = SubResource("RectangleShape2D_cdojk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

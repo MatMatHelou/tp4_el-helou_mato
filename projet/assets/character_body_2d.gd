@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var jump_power = 10.0
 @onready var sfx_jump: AudioStreamPlayer = $sfx_jump
 
+
 var speed_multiplier = 30.0 
 var jump_multiplier = -30.0 
 var direction = 0
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_power * jump_multiplier
 		sfx_jump.play()
+		
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you   should replace UI actions with custom gameplay actions.
